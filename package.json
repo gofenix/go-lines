@@ -2,7 +2,7 @@
   "publisher": "gofenix",
   "name": "go-lines",
   "displayName": "go-lines",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": true,
   "packageManager": "pnpm@8.10.5",
   "description": "",
@@ -39,8 +39,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "go-lines.helloWorld",
-        "title": "Hello World from go-lines"
+        "command": "go-lines",
+        "title": "go-lines"
       }
     ]
   },
