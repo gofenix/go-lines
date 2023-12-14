@@ -1,9 +1,6 @@
-# ext-name
+# go-lines
 
-<a href="https://marketplace.visualstudio.com/items?itemName=gofenix.ext-name" target="__blank"><img src="https://img.shields.io/visual-studio-marketplace/v/gofenix.ext-name.svg?color=eee&amp;label=VS%20Code%20Marketplace&logo=visual-studio-code" alt="Visual Studio Marketplace Version" /></a>
-
-## Sponsors
-
+<a href="https://marketplace.visualstudio.com/items?itemName=gofenix.go-lines" target="__blank"><img src="https://img.shields.io/visual-studio-marketplace/v/gofenix.go-lines.svg?color=eee&amp;label=VS%20Code%20Marketplace&logo=visual-studio-code" alt="Visual Studio Marketplace Version" /></a>
 
 ## License
 

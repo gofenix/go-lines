@@ -1,21 +1,21 @@
 {
   "publisher": "gofenix",
-  "name": "ext-name",
-  "displayName": "ext-name",
-  "version": "0.0.0",
+  "name": "go-lines",
+  "displayName": "go-lines",
+  "version": "0.0.1",
   "private": true,
   "packageManager": "pnpm@8.10.5",
   "description": "",
-  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "author": "Fenix",
   "license": "MIT",
   "funding": "https://github.com/sponsors/gofenix",
-  "homepage": "https://github.com/gofenix/ext-name#readme",
+  "homepage": "https://github.com/gofenix/go-lines#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gofenix/ext-name"
+    "url": "https://github.com/gofenix/go-lines"
   },
   "bugs": {
-    "url": "https://github.com/gofenix/ext-name/issues"
+    "url": "https://github.com/gofenix/go-lines/issues"
   },
   "sponsor": {
     "url": "https://github.com/sponsors/gofenix"
@@ -32,8 +32,17 @@
     "vscode": "^1.84.2"
   },
   "activationEvents": [
-    "onStartupFinished"
+    "onStartupFinished",
+    "workspaceContains:**/*"
   ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "go-lines.helloWorld",
+        "title": "Hello World from go-lines"
+      }
+    ]
+  },
   "scripts": {
     "build": "tsup src/index.ts --external vscode",
     "dev": "nr build --watch",
