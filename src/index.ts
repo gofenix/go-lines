@@ -2,7 +2,7 @@ import { Disposable, ExtensionContext, commands, extensions, window, workspace }
 import * as child from 'child_process'
 
 export async function activate(ext: ExtensionContext) {
-  let commandDisposable = commands.registerCommand('go-lines.helloWorld', async () => {
+  let commandDisposable = commands.registerCommand('go-lines', async () => {
     await runGolines()
   })
 
