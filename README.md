@@ -46,6 +46,16 @@ Then, install this extension in Visual Studio Code:
 3. Click the Install button.
 4. Click the Reload button.
 
+## Q&A
+
+1. **How to use this extension?**
+
+   This extension is designed to be used with the go tooling in Visual Studio Code. It will automatically format your code when you save a file.
+
+2. **How many width can I format at once?**
+
+	150 characters is the default limit, but you can change it in the settings.
+
 ## License
 
 [MIT](./LICENSE) License © 2023 [Fenix](https://github.com/gofenix)
