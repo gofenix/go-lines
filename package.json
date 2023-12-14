@@ -2,7 +2,7 @@
   "publisher": "gofenix",
   "name": "go-lines",
   "displayName": "go-lines",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "packageManager": "pnpm@8.10.5",
   "description": "",
@@ -21,7 +21,8 @@
     "url": "https://github.com/sponsors/gofenix"
   },
   "categories": [
-    "Other"
+    "Programming Languages",
+    "Formatters"
   ],
   "main": "./dist/index.js",
   "icon": "res/icon.png",
