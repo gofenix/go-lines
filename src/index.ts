@@ -4,51 +4,38 @@ import * as child from 'child_process'
 export async function activate(ext: ExtensionContext) {
   initGolines()
 
-  let commandDisposable = commands.registerCommand('go-lines', async () => {
+  let initDisposable = commands.registerCommand('go-lines.init', async () => {
+    await initGolines()
+    window.showInformationMessage("go-lines.init ok")
+  })
+
+  let formatDisposable = commands.registerCommand('go-lines.format', async () => {
     await runGolines()
+    window.showInformationMessage("go-lines.format ok")
   })
 
   let saveDisposable = workspace.onDidSaveTextDocument(async (e) => {
     await runGolines()
   })
 
-  ext.subscriptions.push(commandDisposable, saveDisposable)
+  ext.subscriptions.push(initDisposable, formatDisposable, saveDisposable)
 }
 
 async function runGolines() {
   let activeEditor = window.activeTextEditor;
-  if (activeEditor) {
-    let document = activeEditor.document;
-    // document.uri.path 就是打开的文件的完整路径
-    let uri = document.uri.path
-
-    if (uri.includes(".go")) {
-      let s = `golines -w ${uri} -m 150`
-      child.exec(s, (error, stdout, stderr) => {
-        if (error) {
-          console.log(`error: ${error.message}`)
-          return
-        }
-        if (stderr) {
-          console.log(`stderr: ${stderr}`)
-          return
-        }
-        console.log(`stdout: ${stdout}`)
-      })
-    }
+  if (!activeEditor) {
+    return
   }
-}
-
-async function initGolines() {
-  const isGoProject = await hasGoFilesInWorkspace()
-  if (!isGoProject) {
+  // document.uri.path 就是打开的文件的完整路径
+  let uri = activeEditor.document.uri.path
+  if (!uri.includes(".go")) {
     return
   }
 
-  window.showInformationMessage("Initializing golines...")
-  let cmd = 'go install -v github.com/segmentio/golines@latest'
-
-  child.exec(cmd, (error, stdout, stderr) => {
+  let lineLength = workspace.getConfiguration().get("go-lines.lineLength", 120)
+  let s = `golines -w ${uri} -m ${lineLength}`
+  window.showInformationMessage(s)
+  child.exec(s, (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`)
       return
@@ -58,6 +45,33 @@ async function initGolines() {
       return
     }
     console.log(`stdout: ${stdout}`)
+  })
+
+
+}
+
+async function initGolines() {
+  const isGoProject = await hasGoFilesInWorkspace()
+  if (!isGoProject) {
+    return
+  }
+
+  window.setStatusBarMessage('Initializing golines...', 2 * 1000)
+
+  let cmd = 'go install -v github.com/segmentio/golines@latest'
+  child.exec(cmd, (error, stdout, stderr) => {
+    if (error) {
+      console.log(`${cmd} error: ${error.message}`)
+      window.showErrorMessage(`${cmd} error: ${error.message}`)
+      return
+    }
+    if (stderr) {
+      console.log(`${cmd} stderr: ${stderr}`)
+      window.showErrorMessage(`${cmd} stderr: ${stderr}`)
+      return
+    }
+    console.log(`stdout: ${stdout}`)
+
   })
 }
 

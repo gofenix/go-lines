@@ -55,6 +55,9 @@ Then, install this extension in Visual Studio Code:
 2. **How many width can I format at once?**
 
 	150 characters is the default limit, but you can change it in the settings.
+	```
+	"go-lines.lineLength": 120,
+	```
 
 ## License
 

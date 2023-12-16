@@ -39,8 +39,12 @@
   "contributes": {
     "commands": [
       {
-        "command": "go-lines",
-        "title": "go-lines"
+        "command": "go-lines.init",
+        "title": "go-lines init"
+      },
+      {
+        "command": "go-lines.format",
+        "title": "go-lines format"
       }
     ]
   },
