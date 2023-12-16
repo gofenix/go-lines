@@ -34,7 +34,7 @@ async function runGolines() {
 
   let lineLength = workspace.getConfiguration().get("go-lines.lineLength", 120)
   let s = `golines -w ${uri} -m ${lineLength}`
-  window.showInformationMessage(s)
+
   child.exec(s, (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`)
